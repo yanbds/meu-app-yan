@@ -5,6 +5,10 @@ import heroImg from './assets/hero.png'
 import './App.css'
 
 function Botao({ texto }) {
+
+  const handleClick = () => {
+    alert("Você clicou no botão!");
+  }
   
   return (
     <button
@@ -15,6 +19,7 @@ function Botao({ texto }) {
         fontWeight: "bold",
         border: "none",
       }}
+      onClick={handleClick}
     >
       {texto}
     </button>
