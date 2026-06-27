@@ -1,46 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import {Routes, Route, Link} from 'react-router-dom'
 import './App.css'
+import { Home } from './Pages/Home'
+import { Sobre } from './Pages/Sobre'
+import { Contato } from './Pages/Contato'
 
-function Botao({ texto }) {
+fetch('https://jsonplaceholder.typicode.com/posts')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
 
-  const handleClick = () => {
-    alert("Você clicou no botão!");
-  }
-  
-  return (
-    <button
-      style={{
-        background: "#F2A900",
-        color: "#0D2248",
-        padding: "10px 24px",
-        fontWeight: "bold",
-        border: "none",
-      }}
-      onClick={handleClick}
-    >
-      {texto}
-    </button>
-  );
-}
-
+  async function buscarPost(id) {
+    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+    const data = await response.json();
+  return data; }
 
 function App() {
 
   return (
+
+    
     <>
-  <div>
-    Aperte o meu botão! 
-  </div>
-  <br>
-  </br>
-      <div>
-      <Botao texto="Clique aqui!" />
-      </div>
+    <div>
+      <nav>
+       <Link to="/">Home</Link><br></br>
+       <Link to="/sobre">Sobre</Link><br></br>
+       <Link to="/contato">Contato</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/sobre" element={<Sobre />} />
+        <Route path="/contato" element={<Contato />} />
+      </Routes>
+    </div>
     </>
-  )
+  );
 }
 
 export default App
