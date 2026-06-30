@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react'
+import axios from 'axios'
+import { data } from 'react-router-dom';
 
 function Posts() {
   const [posts, setPosts] = useState([]);
+  
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/posts')
       .then(response => response.json())
@@ -16,4 +19,13 @@ function Posts() {
   );
 }
 
-export default Posts
+async function BuscarPost() {
+  const { data } = await axios.get('https://jsonplaceholder.typicode.com/posts')
+  console.log(data)
+
+}
+
+
+
+
+export { Posts, BuscarPost }
