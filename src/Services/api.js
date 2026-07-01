@@ -1,12 +1,9 @@
 import axios from 'axios';
 
 async function buscar() {
-  // data já é o objeto JS!
-  // sem .json() nem JSON.stringify
-  const { data } = await axios.get('https://jsonplaceholder.typicode.com/posts'
+  const response = await axios.get('https://jsonplaceholder.typicode.com/'
   );
-  console.log(data);
+  return response.data;
 }
-
 
 export { buscar };

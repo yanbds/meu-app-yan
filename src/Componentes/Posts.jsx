@@ -19,13 +19,4 @@ function Posts() {
   );
 }
 
-async function BuscarPost() {
-  const { data } = await axios.get('https://jsonplaceholder.typicode.com/posts')
-  console.log(data)
-
-}
-
-
-
-
-export { Posts, BuscarPost }
+export { Posts}
